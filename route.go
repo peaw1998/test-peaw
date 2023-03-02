@@ -9,6 +9,6 @@ import (
 func Route(r *gin.Engine) {
 	main := r.Group("/calculate")
 	{
-		main.GET("/area", controller.Test())
+		main.POST("/area", controller.CalArea())
 	}
 }

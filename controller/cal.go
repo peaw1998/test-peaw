@@ -6,11 +6,11 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type Area interface {
+type CalculateArea interface {
 	cal()
 }
 
-func calculateArea(cp Area) {
+func cal(cp CalculateArea) {
 	cp.cal()
 }
 
@@ -44,7 +44,7 @@ type InputData struct {
 	W int `json:"Width"`
 }
 
-func Test() func(c *gin.Context) {
+func CalArea() func(c *gin.Context) {
 	return func(c *gin.Context) {
 		var data InputData
 
@@ -55,8 +55,8 @@ func Test() func(c *gin.Context) {
 		t := Triangle{h: data.H, w: data.W}
 		s := Square{h: data.H, w: data.W}
 
-		calculateArea(&t)
-		calculateArea(&s)
+		cal(&t)
+		cal(&s)
 
 		result := ResultArea{TriangleArea: t.area, SquareArea: s.area}
 		service.Resp(c, 1, "OK", result)
