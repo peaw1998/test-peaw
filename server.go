@@ -1,6 +1,8 @@
 package calculate
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -12,7 +14,6 @@ func StartServer() {
 
 	r.Run()
 }
-
 
 func CORS(c *gin.Context) {
 	// First, we add the headers with need to enable CORS
